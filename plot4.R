@@ -1,6 +1,10 @@
 ### this prepares the dataset
-# read file
-household_power_consumption <- read.csv("~/Workspace/Coursera_Data_Science/exploratorydataanalysis/project1/household_power_consumption.txt", sep=";", na.strings = c("?",""))
+
+# make sure that the working directory is set to the parent directory of this script (using setwd())
+
+# download and read file
+download.file("https://d396qusza40orc.cloudfront.net/exdata%2Fdata%2Fhousehold_power_consumption.zip", "powerconsumption.zip", "curl", mode="wb")
+household_power_consumption <- read.csv(unz("powerconsumption.zip", "household_power_consumption.txt"), sep=";", na.strings = c("?",""))
 
 # subset on date
 selected_data <- household_power_consumption[(household_power_consumption$Date=="1/2/2007" | household_power_consumption$Date=="2/2/2007"),]
@@ -33,3 +37,4 @@ with(selected_data, plot(datetime, Global_reactive_power, type="l"))
 
 # close device
 dev.off()
+
