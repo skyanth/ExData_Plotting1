@@ -67,4 +67,3 @@ with(selected_data, plot(datetime, Global_reactive_power, type="l"))
 
 # close device
 dev.off()
-
